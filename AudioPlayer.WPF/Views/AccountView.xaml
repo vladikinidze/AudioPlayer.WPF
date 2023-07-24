@@ -7,7 +7,16 @@
       mc:Ignorable="d"
       Height="450" Width="800">
     <Grid>
-        <TextBlock>AccountView</TextBlock>
-        <Button Command="{Binding NavigateHomeCommand}">Home</Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="AccountView"/>
+            <Button Grid.Row="1" 
+                    Content="Home"
+                    Command="{Binding NavigateHomeCommand}"/>
+        </Grid>
     </Grid>
 </UserControl>

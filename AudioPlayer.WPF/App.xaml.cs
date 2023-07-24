@@ -19,7 +19,7 @@ namespace AudioPlayer.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             var navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new AccountViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new HomeViewModel(navigationStore);
             MainWindow = new MainWindow
             {
                 DataContext = new MainViewModel(navigationStore),
