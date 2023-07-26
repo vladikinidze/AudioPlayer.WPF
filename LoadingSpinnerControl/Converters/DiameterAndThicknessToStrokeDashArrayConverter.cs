@@ -15,7 +15,7 @@ public class DiameterAndThicknessToStrokeDashArrayConverter : IMultiValueConvert
         {
             return 0;
         }
-        var circumference = Math.PI * diameter;
+        var circumference = Math.PI * (diameter - thickness);
         var lineLength = circumference * 0.75;
         var gapLength = circumference - lineLength;
         return new DoubleCollection(new[] { lineLength / thickness, gapLength / thickness });
