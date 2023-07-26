@@ -1,6 +1,4 @@
-﻿using System;
-using AudioPlayer.WPF.Services;
-using AudioPlayer.WPF.Stores;
+﻿using AudioPlayer.WPF.Services;
 using AudioPlayer.WPF.ViewModels;
 
 namespace AudioPlayer.WPF.Command;

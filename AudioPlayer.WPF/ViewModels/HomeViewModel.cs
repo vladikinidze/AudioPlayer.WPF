@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using AudioPlayer.WPF.Command;
 using AudioPlayer.WPF.Services;
-using AudioPlayer.WPF.Stores;
 
 namespace AudioPlayer.WPF.ViewModels;
 
