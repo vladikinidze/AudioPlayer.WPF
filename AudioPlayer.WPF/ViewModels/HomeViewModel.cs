@@ -4,15 +4,13 @@ using AudioPlayer.WPF.Services;
 using AudioPlayer.WPF.Stores;
 
 namespace AudioPlayer.WPF.ViewModels;
-    
+
 public class HomeViewModel : BaseViewModel
 {
-    public HomeViewModel(NavigationStore navigationStore)
+    public HomeViewModel(INavigationService<AccountViewModel> accountNavigationService)
     {
-        NavigateAccountCommand = new NavigateCommand<AccountViewModel>(
-            new NavigationService<AccountViewModel>(
-                navigationStore,
-                () => new AccountViewModel(navigationStore)));
+        NavigateAccountCommand = new NavigateCommand<AccountViewModel>(accountNavigationService);
     }
+
     public ICommand NavigateAccountCommand { get; }
 }

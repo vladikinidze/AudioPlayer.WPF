@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using AudioPlayer.WPF.ViewModels;
 
-namespace AudioPlayer.WPF.Views
+namespace AudioPlayer.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

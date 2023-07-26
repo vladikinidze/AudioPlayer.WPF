@@ -8,13 +8,10 @@ namespace AudioPlayer.WPF.ViewModels;
 
 public class AccountViewModel : BaseViewModel
 {
-    public AccountViewModel(NavigationStore navigationStore)
+    public AccountViewModel(INavigationService<HomeViewModel> homeNavigationService)
     {
-        NavigateHomeCommand = new NavigateCommand<HomeViewModel>(
-            new NavigationService<HomeViewModel>(
-                navigationStore, 
-                () => new HomeViewModel(navigationStore)));
+        NavigateHomeCommand = new NavigateCommand<HomeViewModel>(homeNavigationService);
     }
-    
+
     public ICommand NavigateHomeCommand { get; }
 }
