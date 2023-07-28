@@ -4,7 +4,7 @@ using AudioPlayer.WPF.ViewModels;
 
 namespace AudioPlayer.WPF.Services;
 
-public class LayoutNavigationService<TViewModel> : INavigationService<TViewModel>
+public class LayoutNavigationService<TViewModel> : INavigationService
     where TViewModel : BaseViewModel
 {
     private readonly NavigationStore _navigationStore;

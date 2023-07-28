@@ -2,8 +2,7 @@
 
 namespace AudioPlayer.WPF.Services;
 
-public interface INavigationService<TViewModel>
-    where TViewModel : BaseViewModel
+public interface INavigationService
 {
     void Navigate();
 }

@@ -6,13 +6,13 @@ namespace AudioPlayer.WPF.ViewModels;
 
 public class SidebarViewModel : BaseViewModel
 {
-    public SidebarViewModel(INavigationService<HomeViewModel> homeNavigationService,
-        INavigationService<SearchViewModel> searchNavigationService,
-        INavigationService<LibraryViewModel> libraryNavigationService)
+    public SidebarViewModel(INavigationService homeNavigationService,
+        INavigationService searchNavigationService,
+        INavigationService libraryNavigationService)
     {
-        NavigateHomeCommand = new NavigateCommand<HomeViewModel>(homeNavigationService);
-        NavigateSearchCommand = new NavigateCommand<SearchViewModel>(searchNavigationService);
-        NavigateLibraryCommand = new NavigateCommand<LibraryViewModel>(libraryNavigationService);
+        NavigateHomeCommand = new NavigateCommand(homeNavigationService);
+        NavigateSearchCommand = new NavigateCommand(searchNavigationService);
+        NavigateLibraryCommand = new NavigateCommand(libraryNavigationService);
     }
 
     public ICommand NavigateHomeCommand { get; }

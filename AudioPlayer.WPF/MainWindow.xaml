@@ -7,10 +7,11 @@
         xmlns:viewModels="clr-namespace:AudioPlayer.WPF.ViewModels"
         xmlns:views="clr-namespace:AudioPlayer.WPF.Views"
         xmlns:components="clr-namespace:AudioPlayer.WPF.Components"
+        xmlns:modal="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <ContentControl Content="{Binding CurrentViewModel}">
-        <ContentControl.Resources>
+    <Grid>
+        <Grid.Resources>
             <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
                 <views:HomeView />
             </DataTemplate>
@@ -26,6 +27,12 @@
             <DataTemplate DataType="{x:Type viewModels:LayoutViewModel}">
                 <components:Layout />
             </DataTemplate>
-        </ContentControl.Resources>
-    </ContentControl>
+        </Grid.Resources>
+
+        <modal:Modal Panel.ZIndex="100" IsOpen="{Binding IsModalOpen}">
+            <ContentControl Content="{Binding CurrentModalViewModel}" />
+        </modal:Modal>
+
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
 </Window>

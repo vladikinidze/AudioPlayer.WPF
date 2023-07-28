@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using AudioPlayer.WPF.Services;
 using AudioPlayer.WPF.Stores;
 using AudioPlayer.WPF.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AudioPlayer.WPF;
 
@@ -10,63 +12,83 @@ namespace AudioPlayer.WPF;
 /// </summary>
 public partial class App : Application
 {
-    private readonly NavigationStore _navigationStore;
+    private readonly IServiceProvider _serviceProvider;
 
     public App()
     {
-        _navigationStore = new NavigationStore();
-        CreateSidebarViewModel();
+        IServiceCollection services = new ServiceCollection();
+
+        services.AddSingleton<NavigationStore>();
+        services.AddSingleton<ModalNavigationStore>();
+
+        services.AddSingleton<INavigationService>(CreateHomeNavigationService);
+
+        services.AddTransient<HomeViewModel>(serviceProvider =>
+            new HomeViewModel(CreateAccountNavigationService(serviceProvider)));
+        services.AddTransient<AccountViewModel>(serviceProvider =>
+            new AccountViewModel(CreateHomeNavigationService(serviceProvider)));
+        services.AddTransient<LibraryViewModel>(serviceProvider =>
+            new LibraryViewModel());
+        services.AddTransient<SearchViewModel>(serviceProvider =>
+            new SearchViewModel());
+        services.AddSingleton<SidebarViewModel>(CreateSidebarViewModel);
+        
+        services.AddSingleton<MainViewModel>();
+        services.AddSingleton<MainWindow>(serviceProvider => new MainWindow
+        {
+            DataContext = serviceProvider.GetRequiredService<MainViewModel>(),
+        });
+        _serviceProvider = services.BuildServiceProvider();
     }
 
-    private SidebarViewModel CreateSidebarViewModel()
+    private SidebarViewModel CreateSidebarViewModel(IServiceProvider serviceProvider)
     {
         return new SidebarViewModel(
-            CreateHomeNavigationService(),
-            CreateSearchNavigationService(),
-            CreateLibraryNavigationService());
+            CreateHomeNavigationService(serviceProvider),
+            CreateSearchNavigationService(serviceProvider),
+            CreateLibraryNavigationService(serviceProvider));
     }
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        var homeNavigationService = CreateHomeNavigationService();
-        homeNavigationService.Navigate();
-        MainWindow = new MainWindow
-        {
-            DataContext = new MainViewModel(_navigationStore),
-        };
+        var initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
+        initialNavigationService.Navigate();
+        
+        MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
         MainWindow.Show();
+        
         base.OnStartup(e);
     }
 
-    private INavigationService<LibraryViewModel> CreateLibraryNavigationService()
+    private INavigationService CreateLibraryNavigationService(IServiceProvider serviceProvider)
     {
         return new LayoutNavigationService<LibraryViewModel>(
-            _navigationStore,
-            CreateSidebarViewModel,
-            () => new LibraryViewModel());
+            serviceProvider.GetRequiredService<NavigationStore>(),
+            serviceProvider.GetRequiredService<SidebarViewModel>,
+            serviceProvider.GetRequiredService<LibraryViewModel>);
     }
 
-    private INavigationService<AccountViewModel> CreateAccountNavigationService()
+    private INavigationService CreateAccountNavigationService(IServiceProvider serviceProvider)
     {
         return new LayoutNavigationService<AccountViewModel>(
-            _navigationStore,
-            CreateSidebarViewModel,
-            () => new AccountViewModel(CreateHomeNavigationService()));
+            serviceProvider.GetRequiredService<NavigationStore>(),
+            serviceProvider.GetRequiredService<SidebarViewModel>,
+            serviceProvider.GetRequiredService<AccountViewModel>);
     }
 
-    private INavigationService<SearchViewModel> CreateSearchNavigationService()
+    private INavigationService CreateSearchNavigationService(IServiceProvider serviceProvider)
     {
         return new LayoutNavigationService<SearchViewModel>(
-            _navigationStore,
-            CreateSidebarViewModel,
-            () => new SearchViewModel());
+            serviceProvider.GetRequiredService<NavigationStore>(),
+            serviceProvider.GetRequiredService<SidebarViewModel>,
+            serviceProvider.GetRequiredService<SearchViewModel>);
     }
 
-    private INavigationService<HomeViewModel> CreateHomeNavigationService()
+    private INavigationService CreateHomeNavigationService(IServiceProvider serviceProvider)
     {
         return new LayoutNavigationService<HomeViewModel>(
-            _navigationStore,
-            CreateSidebarViewModel,
-            () => new HomeViewModel(CreateAccountNavigationService()));
+            serviceProvider.GetRequiredService<NavigationStore>(),
+            serviceProvider.GetRequiredService<SidebarViewModel>,
+            serviceProvider.GetRequiredService<HomeViewModel>);
     }
 }

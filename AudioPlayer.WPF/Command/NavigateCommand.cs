@@ -3,12 +3,11 @@ using AudioPlayer.WPF.ViewModels;
 
 namespace AudioPlayer.WPF.Command;
 
-public class NavigateCommand<TViewModel> : BaseCommand
-    where TViewModel : BaseViewModel
+public class NavigateCommand : BaseCommand
 {
-    private readonly INavigationService<TViewModel> _navigationService;
+    private readonly INavigationService _navigationService;
 
-    public NavigateCommand(INavigationService<TViewModel> navigationService)
+    public NavigateCommand(INavigationService navigationService)
     {
         _navigationService = navigationService;
     }
