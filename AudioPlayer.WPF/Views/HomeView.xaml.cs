@@ -1,9 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace AudioPlayer.WPF.Views;
 
 public partial class HomeView : UserControl
 {
+    
     public HomeView()
     {
         InitializeComponent();

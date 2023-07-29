@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioPlayer.WPF.Components"
              mc:Ignorable="d">
-    <Grid Margin="0, 10, 0 ,0">
+    <Grid Background="{DynamicResource Brush1}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
@@ -13,21 +13,22 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"
-                Command="{Binding NavigateHomeCommand}"
-                Content="Главная"
-                Style="{DynamicResource ButtonStyle}" />
-        <Button Grid.Row="1"
-                Command="{Binding NavigateSearchCommand}"
-                Content="Поиск"
-                Style="{DynamicResource ButtonStyle}" />
-        <Button Grid.Row="2"
-                Command="{Binding NavigateLibraryCommand}"
-                Content="Медиатека"
-                Style="{DynamicResource ButtonStyle}" />
-        <Button Grid.Row="3"
-                Command="{Binding CreatePlaylistCommand}"
-                Content="Создать плейлист"
-                Style="{DynamicResource ButtonStyle}" />
+        <RadioButton Grid.Row="0"
+                     IsChecked="True"
+                     Command="{Binding NavigateHomeCommand}"
+                     Content="Главная"
+                     Style="{DynamicResource NavButton}" />
+        <RadioButton Grid.Row="1"
+                     Command="{Binding NavigateSearchCommand}"
+                     Content="Поиск"
+                     Style="{DynamicResource NavButton}" />
+        <RadioButton Grid.Row="2"
+                     Command="{Binding NavigateLibraryCommand}"
+                     Content="Медиатека"
+                     Style="{DynamicResource NavButton}" />
+        <RadioButton Grid.Row="3"
+                     Command="{Binding CreatePlaylistCommand}"
+                     Content="Создать плейлист"
+                     Style="{DynamicResource NavButton}" />
     </Grid>
 </UserControl>

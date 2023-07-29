@@ -21,7 +21,7 @@ public partial class App : Application
         services.AddSingleton<NavigationStore>();
         services.AddSingleton<ModalNavigationStore>();
 
-        services.AddSingleton<INavigationService>(CreateHomeNavigationService);
+        services.AddSingleton(CreateHomeNavigationService);
 
         services.AddTransient<HomeViewModel>(serviceProvider =>
             new HomeViewModel(CreateAccountNavigationService(serviceProvider)));
@@ -31,7 +31,7 @@ public partial class App : Application
             new LibraryViewModel());
         services.AddTransient<SearchViewModel>(serviceProvider =>
             new SearchViewModel());
-        services.AddSingleton<SidebarViewModel>(CreateSidebarViewModel);
+        services.AddSingleton(CreateSidebarViewModel);
         
         services.AddSingleton<MainViewModel>();
         services.AddSingleton<MainWindow>(serviceProvider => new MainWindow
