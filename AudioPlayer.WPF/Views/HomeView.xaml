@@ -6,32 +6,31 @@
              xmlns:local="clr-namespace:AudioPlayer.WPF.Views"
              xmlns:components="clr-namespace:AudioPlayer.WPF.Components"
              mc:Ignorable="d">
-   <ScrollViewer>
-       <Grid Background="{StaticResource Brush3}">
-           <Grid.RowDefinitions>
-               <RowDefinition Height="Auto" />
-               <RowDefinition Height="*" />
-           </Grid.RowDefinitions>
-           <Grid Grid.Row="0">
-               <TextBox Text="Поиск" 
-                        Margin="20 10"/>
-           </Grid>
-           <Grid Grid.Row="1">
-               <Grid.RowDefinitions>
-                   <RowDefinition Height="Auto"/>
-                   <RowDefinition Height="Auto"/>
-               </Grid.RowDefinitions>
-               <TextBlock Grid.Row="0"
-                          Text="Home" 
-                          Foreground="{StaticResource WhiteBrush}"
-                          Margin="20 10"
-                          FontSize="34"/>
-            
-               <components:PlaylistList Grid.Row="1" 
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch" />
-            
-           </Grid>
-       </Grid>
-   </ScrollViewer>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Text="Home"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource WhiteBrush}"
+                           Margin="20 10"
+                           FontSize="46" />
+
+                <components:PlaylistList Grid.Row="1"/>
+
+
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

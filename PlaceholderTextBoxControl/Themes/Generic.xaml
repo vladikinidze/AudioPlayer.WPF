@@ -10,20 +10,62 @@
                 <ControlTemplate TargetType="{x:Type local:PlaceholderTextBox}">
                     <ControlTemplate.Resources>
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                        <converters:IconTypeToVisibilityConverter x:Key="IconTypeToVisibilityConverter" />
                         <converters:AddLeftPaddingConverter x:Key="AddLeftPaddingConverter" />
                     </ControlTemplate.Resources>
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Margin="{TemplateBinding Margin}">
                         <Grid>
-                            <TextBox Text="{TemplateBinding Placeholder}"
-                                     Panel.ZIndex="10"
-                                     Opacity="0.5"
-                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                     Padding="{TemplateBinding Padding, Converter={StaticResource AddLeftPaddingConverter}, ConverterParameter=3}"
-                                     Visibility="{TemplateBinding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <ScrollViewer x:Name="PART_ContentHost" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Viewbox Grid.Column="0"
+                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=Before}"
+                                     Height="{TemplateBinding FontSize}"
+                                     Width="{TemplateBinding FontSize}"
+                                     HorizontalAlignment="Left">
+                                <Path Stretch="Fill"
+                                      Fill="{TemplateBinding Foreground}"
+                                      Data="{TemplateBinding IconPathData}">
+                                </Path>
+                            </Viewbox>
+
+                            <Grid Grid.Column="1">
+                                <TextBox Text="{TemplateBinding Placeholder}"
+                                         BorderThickness="0"
+                                         IsReadOnly="True"
+                                         IsHitTestVisible="False"
+                                         Panel.ZIndex="10"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         Background="{TemplateBinding Background}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Padding="{TemplateBinding Padding, Converter={StaticResource AddLeftPaddingConverter}, ConverterParameter=3}"
+                                         Visibility="{TemplateBinding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Disabled"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Grid>
+
+                            <Viewbox Grid.Column="2"
+                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=After}"
+                                     Height="{TemplateBinding FontSize}"
+                                     Width="{TemplateBinding FontSize}"
+                                     HorizontalAlignment="Right">
+                                <Path Stretch="Fill"
+                                      Fill="{TemplateBinding Foreground}"
+                                      Data="{TemplateBinding IconPathData}">     
+                                </Path>
+                            </Viewbox>
+
                         </Grid>
                     </Border>
                 </ControlTemplate>

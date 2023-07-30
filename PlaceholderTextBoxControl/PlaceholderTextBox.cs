@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PlaceholderTextBox;
 
@@ -15,17 +17,44 @@ public class PlaceholderTextBox : TextBox
         set => SetValue(PlaceholderProperty, value);
     }
 
-    private static readonly DependencyPropertyKey IsEmptyPropertyKey =
-        DependencyProperty.RegisterReadOnly(nameof(IsEmpty), typeof(bool),
-            typeof(PlaceholderTextBox), new PropertyMetadata(true));
+    //private static readonly DependencyPropertyKey IsEmptyPropertyKey =
+    //    DependencyProperty.RegisterReadOnly(nameof(IsEmpty), typeof(bool),
+    //        typeof(PlaceholderTextBox), new PropertyMetadata(true));
 
-    public static readonly DependencyProperty IsEmptyProperty = IsEmptyPropertyKey.DependencyProperty;
+    //public static readonly DependencyProperty IsEmptyProperty = IsEmptyPropertyKey.DependencyProperty;
+
+    public static readonly DependencyProperty IsEmptyProperty =
+        DependencyProperty.Register(nameof(IsEmpty), typeof(bool),
+            typeof(PlaceholderTextBox), new PropertyMetadata(true));
 
     public bool IsEmpty
     {
         get => (bool)GetValue(IsEmptyProperty);
         private set => SetValue(IsEmptyProperty, value);
     }
+
+    public IconPlacementType IconPlacementType
+    {
+        get => (IconPlacementType)GetValue(IconPlacementTypeProperty);
+        set => SetValue(IconPlacementTypeProperty, value);
+    }
+
+    public static readonly DependencyProperty IconPlacementTypeProperty =
+        DependencyProperty.Register(nameof(IconPlacementType), typeof(IconPlacementType),
+            typeof(PlaceholderTextBox), new PropertyMetadata(IconPlacementType.None));
+
+    
+
+    public static readonly DependencyProperty IconPathDataProperty =
+        DependencyProperty.Register(nameof(IconPathData), typeof(Geometry),
+            typeof(PlaceholderTextBox), new PropertyMetadata(Geometry.Empty));
+
+    public Geometry IconPathData
+    {
+        get => (Geometry)GetValue(IconPathDataProperty);
+        set => SetValue(IconPathDataProperty, value);
+    }
+
 
     static PlaceholderTextBox()
     {

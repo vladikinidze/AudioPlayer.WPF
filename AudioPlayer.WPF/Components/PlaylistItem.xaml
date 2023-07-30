@@ -4,38 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioPlayer.WPF.Components"
-             mc:Ignorable="d"
-             HorizontalAlignment="Stretch"
-             Name="root">
-    <Border CornerRadius="2"
-            Background="{DynamicResource Brush2}">
+             Name="root"
+             mc:Ignorable="d">
+    <Border CornerRadius="5"
+            Margin="0, 0, 0, 10"
+            Background="{DynamicResource Brush2}"
+            Width="{Binding Width, ElementName=root}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="{Binding Width, ElementName=root}" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+             <Grid.RowDefinitions>
+                 <RowDefinition Height="{Binding Width, ElementName=root}" />
+                 <RowDefinition Height="Auto"/>
+             </Grid.RowDefinitions>
             <Border Grid.Row="0"
-                    Margin="10"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    CornerRadius="5">
+                    CornerRadius="8"
+                    Margin="15">
                 <Border.Background>
-                    <ImageBrush Stretch="Fill"
-                                ImageSource="../Images/m1000x1000.jpg" />
+                    <ImageBrush Stretch="Fill" 
+                                ImageSource="../Images/m1000x1000.jpg"/>
                 </Border.Background>
             </Border>
-            <Grid Grid.Row="1" Margin="10, 0, 10, 10">
+            <Grid Grid.Row="1"
+                  Margin="15, 0, 15, 15">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-                            Style="{DynamicResource WhiteText}"
-                           Text="Title" />
-                <TextBlock Grid.Row="1"
-                           Style="{DynamicResource GrayText}"
-                           Text="Author">
-                </TextBlock>
+                <TextBlock Grid.Row="0" 
+                           Text="dfgfdgdf" 
+                           Margin="0, 0, 0, 3"
+                           Style="{DynamicResource WhiteText}"/>
+                <TextBlock Grid.Row="1" 
+                           Text="dsfgsdfds" 
+                           Style="{DynamicResource GrayText}"/>
             </Grid>
         </Grid>
     </Border>

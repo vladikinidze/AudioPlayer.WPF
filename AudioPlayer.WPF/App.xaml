@@ -4,99 +4,12 @@
              xmlns:local="clr-namespace:AudioPlayer.WPF">
     <Application.Resources>
 
-        <!-- Brushes -->
-        
-        <SolidColorBrush Color="#0a0a0a" x:Key="Brush1" />
-        <SolidColorBrush Color="#282828" x:Key="Brush2" />
-        <SolidColorBrush Color="#121212" x:Key="Brush3" />
-        <SolidColorBrush Color="#585858" x:Key="Brush4" />
-        <SolidColorBrush Color="Transparent" x:Key="TransparentBrush" /> 
-        <SolidColorBrush Color="#FFFFFF" x:Key="WhiteBrush" />
-        
-        <!-- Colors -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/DarkTheme.xaml"/>
+                <ResourceDictionary Source="../Styles/ControlsStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
-        <Color x:Key="Color1">#0a0a0a</Color>
-        <Color x:Key="Color2">#282828</Color>
-        <Color x:Key="Color3">#121212</Color>
-        <Color x:Key="Color4">#585858</Color>
-        <Color x:Key="TransparentColor">Transparent</Color>
-        <Color x:Key="WhiteColor">#FFFFFF</Color>
-        
-        <!-- RadioButton  -->
-        
-        <Style TargetType="RadioButton" x:Key="NavButton">
-            <Setter Property="Background" Value="Transparent" />    
-            <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
-            <Setter Property="Padding" Value="20 0" />
-            <Setter Property="Margin" Value="3 3, 3, 0" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border x:Name="border" Background="{TemplateBinding Background}"
-                                CornerRadius="5"
-                                Margin="{TemplateBinding Margin}"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter Content="{TemplateBinding Content}"
-                                              HorizontalAlignment="Left"
-                                              VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" 
-                                        Value="{DynamicResource Brush2}" 
-                                        TargetName="border" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="{StaticResource Color2}"
-                                            Duration="0:0:0.2"
-                                            Storyboard.TargetProperty="Background.Color"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="{StaticResource Color1}"
-                                            Duration="0:0:0.2"
-                                            Storyboard.TargetProperty="Background.Color"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-
-        <!--GridSplitter-->
-
-        <Style TargetType="GridSplitter" x:Key="GridSplitter">
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Background" Value="{DynamicResource Brush3}"/>
-            <Setter Property="BorderThickness" Value="1, 0, 0, 0"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush3}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" 
-                            Value="{DynamicResource Brush4}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- TextBlock -->
-        
-        <Style TargetType="TextBlock" x:Key="WhiteText">
-            <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}"/>
-        </Style>
-        
-        <Style TargetType="TextBlock" x:Key="GrayText">
-            <Setter Property="Foreground" Value="{DynamicResource Brush4}"/>
-        </Style>
-        
     </Application.Resources>
 </Application>

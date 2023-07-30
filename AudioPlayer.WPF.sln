@@ -1,14 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.WPF", "AudioPlayer.WPF\AudioPlayer.WPF.csproj", "{B04B810B-3CDB-49E9-8C52-801EF897CEB9}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioPlayer.WPF", "AudioPlayer.WPF\AudioPlayer.WPF.csproj", "{B04B810B-3CDB-49E9-8C52-801EF897CEB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModalControl", "ModalControl\ModalControl.csproj", "{0A5BD6EF-2992-4F66-BE69-0DBFFED788DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModalControl", "ModalControl\ModalControl.csproj", "{0A5BD6EF-2992-4F66-BE69-0DBFFED788DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadingSpinnerControl", "LoadingSpinnerControl\LoadingSpinnerControl.csproj", "{E4CFEB79-3FD2-4A78-80B2-2A7D03104EAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoadingSpinnerControl", "LoadingSpinnerControl\LoadingSpinnerControl.csproj", "{E4CFEB79-3FD2-4A78-80B2-2A7D03104EAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceholderTextBoxControl", "PlaceholderTextBoxControl\PlaceholderTextBoxControl.csproj", "{6BC9EFA8-E51B-466B-99CF-A54A6FF6ED79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaceholderTextBoxControl", "PlaceholderTextBoxControl\PlaceholderTextBoxControl.csproj", "{6BC9EFA8-E51B-466B-99CF-A54A6FF6ED79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropdownMenuControl", "DropdownMenuControl\DropdownMenuControl.csproj", "{13262922-8FA4-47F2-8535-CBB6BDD00B04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DropdownMenuControl", "DropdownMenuControl\DropdownMenuControl.csproj", "{13262922-8FA4-47F2-8535-CBB6BDD00B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioButtonWithIconControl", "RadioButtonWithIconControl\RadioButtonWithIconControl.csproj", "{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +41,15 @@ Global
 		{13262922-8FA4-47F2-8535-CBB6BDD00B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13262922-8FA4-47F2-8535-CBB6BDD00B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13262922-8FA4-47F2-8535-CBB6BDD00B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DDB8A43-AB90-48FA-A53D-59E7646A7782}
 	EndGlobalSection
 EndGlobal

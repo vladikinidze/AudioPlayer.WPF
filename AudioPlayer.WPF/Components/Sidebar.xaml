@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioPlayer.WPF.Components"
+             xmlns:custom="clr-namespace:RadioButtonWithIconControl;assembly=RadioButtonWithIconControl"
              mc:Ignorable="d">
     <Grid Background="{DynamicResource Brush1}">
         <Grid.RowDefinitions>
@@ -13,22 +14,26 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RadioButton Grid.Row="0"
-                     IsChecked="True"
-                     Command="{Binding NavigateHomeCommand}"
-                     Content="Главная"
-                     Style="{DynamicResource NavButton}" />
-        <RadioButton Grid.Row="1"
-                     Command="{Binding NavigateSearchCommand}"
-                     Content="Поиск"
-                     Style="{DynamicResource NavButton}" />
-        <RadioButton Grid.Row="2"
-                     Command="{Binding NavigateLibraryCommand}"
-                     Content="Медиатека"
-                     Style="{DynamicResource NavButton}" />
-        <RadioButton Grid.Row="3"
-                     Command="{Binding CreatePlaylistCommand}"
-                     Content="Создать плейлист"
-                     Style="{DynamicResource NavButton}" />
+        <custom:RadioButtonWithIcon Grid.Row="0"
+                                    IconPathData="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"
+                                    IsChecked="True"
+                                    Command="{Binding NavigateHomeCommand}"
+                                    Content="Главная"
+                                    Style="{DynamicResource NavButton}" />
+        <custom:RadioButtonWithIcon Grid.Row="1"
+                                    IconPathData="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"
+                                    Command="{Binding NavigateSearchCommand}"
+                                    Content="Поиск"
+                                    Style="{DynamicResource NavButton}" />
+        <custom:RadioButtonWithIcon Grid.Row="2"
+                                    IconPathData="M486-333q41 0 70-28.42T585-431v-252h116v-60H545v237q-11-9-26.319-14-15.319-5-32.681-5-39.06 0-66.03 27.366t-26.97 67Q393-391 419.97-362T486-333ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z"
+                                    Command="{Binding NavigateLibraryCommand}"
+                                    Content="Медиатека"
+                                    Style="{DynamicResource NavButton}" />
+        <custom:RadioButtonWithIcon Grid.Row="3"
+                                    IconPathData="M453-280h60v-166h167v-60H513v-174h-60v174H280v60h173v166Zm27.266 200q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80-397.681 80-480.5q0-82.819 31.5-155.659Q143-709 197.5-763t127.341-85.5Q397.681-880 480.5-880q82.819 0 155.659 31.5Q709-817 763-763t85.5 127Q880-563 880-480.266q0 82.734-31.5 155.5T763-197.684q-54 54.316-127 86Q563-80 480.266-80Zm.234-60Q622-140 721-239.5t99-241Q820-622 721.188-721 622.375-820 480-820q-141 0-240.5 98.812Q140-622.375 140-480q0 141 99.5 240.5t241 99.5Zm-.5-340Z"
+                                    Command="{Binding CreatePlaylistCommand}"
+                                    Content="Создать плейлист"
+                                    Style="{DynamicResource NavButton}" />
     </Grid>
 </UserControl>

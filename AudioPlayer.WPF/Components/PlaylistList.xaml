@@ -7,18 +7,22 @@
              xmlns:controls="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              mc:Ignorable="d"
              Name="root">
-    <Grid>
-        <ListView Name="ListView" >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <controls:VirtualizingWrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <local:PlaylistItem />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
+
+    <ListView Name="ListView"
+              Margin="5, 10"
+              HorizontalAlignment="Stretch"
+              BorderBrush="{DynamicResource TransparentBrush}"
+              Background="{DynamicResource TransparentBrush}">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <controls:VirtualizingWrapPanel/>
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <ItemContainerTemplate>
+                <local:PlaylistItem Width="180"/>
+            </ItemContainerTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </UserControl>

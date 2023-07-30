@@ -35,6 +35,7 @@
       <ProjectReference Include="..\LoadingSpinnerControl\LoadingSpinnerControl.csproj" />
       <ProjectReference Include="..\ModalControl\ModalControl.csproj" />
       <ProjectReference Include="..\PlaceholderTextBoxControl\PlaceholderTextBoxControl.csproj" />
+      <ProjectReference Include="..\RadioButtonWithIconControl\RadioButtonWithIconControl.csproj" />
     </ItemGroup>
 
     <ItemGroup>
