@@ -8,8 +8,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:RadioButtonWithIcon}">
                     <ControlTemplate.Resources>
-                        <converters:IconTypeToVisibilityConverter x:Key="IconTypeToVisibilityConverter" />
+                        <converters:IconPlacementTypeAndIconToVisibilityConverter x:Key="IconPlacementTypeAndIconToVisibilityConverter" />
                         <converters:FontSizeToWidthConverter x:Key="FontSizeToWidthConverter" />
+                        <converters:IconCheckedToIconConverter x:Key="IconCheckedToIconConverter" />
                     </ControlTemplate.Resources>
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -28,13 +29,19 @@
                             <Viewbox Grid.Column="0"
                                      Margin="{TemplateBinding IconMargin}"
                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=Before}"
                                      Height="{TemplateBinding FontSize, Converter={StaticResource FontSizeToWidthConverter}}"
                                      Width="{TemplateBinding FontSize, Converter={StaticResource FontSizeToWidthConverter}}"
                                      HorizontalAlignment="Left">
+                                <Viewbox.Visibility>
+                                    <MultiBinding Converter="{StaticResource IconPlacementTypeAndIconToVisibilityConverter}" ConverterParameter="Before">
+                                        <Binding Path="IconPlacementType" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Viewbox.Visibility>
                                 <Path Stretch="Fill"
                                       Fill="{TemplateBinding Foreground}"
-                                      Data="{TemplateBinding IconPathData}">
+                                      Data="{TemplateBinding IconPathData}"
+                                      x:Name="path1">
                                 </Path>
                             </Viewbox>
 
@@ -46,22 +53,46 @@
                             <Viewbox Grid.Column="2"
                                      Margin="{TemplateBinding IconMargin}"
                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=After}"
                                      Height="{TemplateBinding FontSize, Converter={StaticResource FontSizeToWidthConverter}}"
                                      Width="{TemplateBinding FontSize, Converter={StaticResource FontSizeToWidthConverter}}"
                                      HorizontalAlignment="Right">
+                                <Viewbox.Visibility>
+                                    <MultiBinding Converter="{StaticResource IconPlacementTypeAndIconToVisibilityConverter}" ConverterParameter="After">
+                                        <Binding Path="IconPlacementType" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Viewbox.Visibility>
                                 <Path Stretch="Fill"
                                       Fill="{TemplateBinding Foreground}"
-                                      Data="{TemplateBinding IconPathData}">
+                                      Data="{TemplateBinding IconPathData}"
+                                      x:Name="path2">
                                 </Path>
                             </Viewbox>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" 
-                                    Value="{Binding CheckedBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                                    TargetName="border"/>
+                            <Setter Property="Data"
+                                    TargetName="path1">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource IconCheckedToIconConverter}">
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="CheckedIconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Data"
+                                    TargetName="path2">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource IconCheckedToIconConverter}">
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="CheckedIconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{Binding CheckedBackground , RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
