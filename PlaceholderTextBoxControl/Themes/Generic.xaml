@@ -10,8 +10,9 @@
                 <ControlTemplate TargetType="{x:Type local:PlaceholderTextBox}">
                     <ControlTemplate.Resources>
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-                        <converters:IconTypeToVisibilityConverter x:Key="IconTypeToVisibilityConverter" />
                         <converters:AddLeftPaddingConverter x:Key="AddLeftPaddingConverter" />
+                        <converters:FocusedIconToIconConverter x:Key="FocusedIconToIconConverter" />
+                        <converters:IconPlacementTypeAndIconToVisibilityConverter x:Key="IconPlacementTypeAndIconToVisibilityConverter" />
                     </ControlTemplate.Resources>
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -26,22 +27,27 @@
                             </Grid.ColumnDefinitions>
 
                             <Viewbox Grid.Column="0"
-                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=Before}"
                                      Height="{TemplateBinding FontSize}"
                                      Width="{TemplateBinding FontSize}"
                                      HorizontalAlignment="Left">
+                                <Viewbox.Visibility>
+                                    <MultiBinding Converter="{StaticResource IconPlacementTypeAndIconToVisibilityConverter}" ConverterParameter="Before">
+                                        <Binding Path="IconPlacementType" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Viewbox.Visibility>
                                 <Path Stretch="Fill"
                                       Fill="{TemplateBinding Foreground}"
-                                      Data="{TemplateBinding IconPathData}">
+                                      Data="{TemplateBinding IconPathData}"
+                                      x:Name="path1">
                                 </Path>
                             </Viewbox>
 
                             <Grid Grid.Column="1">
                                 <TextBox Text="{TemplateBinding Placeholder}"
                                          BorderThickness="0"
-                                         IsReadOnly="True"
                                          IsHitTestVisible="False"
-                                         Panel.ZIndex="10"
+                                         Opacity="0.7"
                                          Foreground="{TemplateBinding Foreground}"
                                          Background="{TemplateBinding Background}"
                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -56,18 +62,46 @@
                             </Grid>
 
                             <Viewbox Grid.Column="2"
-                                     Visibility="{TemplateBinding IconPlacementType, Converter={StaticResource IconTypeToVisibilityConverter}, ConverterParameter=After}"
                                      Height="{TemplateBinding FontSize}"
                                      Width="{TemplateBinding FontSize}"
                                      HorizontalAlignment="Right">
+                                <Viewbox.Visibility>
+                                <MultiBinding Converter="{StaticResource IconPlacementTypeAndIconToVisibilityConverter}" ConverterParameter="After">
+                                    <Binding Path="IconPlacementType" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </MultiBinding>
+                                </Viewbox.Visibility>
                                 <Path Stretch="Fill"
                                       Fill="{TemplateBinding Foreground}"
-                                      Data="{TemplateBinding IconPathData}">     
+                                      Data="{TemplateBinding IconPathData}"
+                                      x:Name="path2">     
                                 </Path>
                             </Viewbox>
 
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Data"
+                                    TargetName="path1">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource FocusedIconToIconConverter}">
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="FocusedIconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Data"
+                                    TargetName="path2">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource FocusedIconToIconConverter}">
+                                        <Binding Path="IconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                        <Binding Path="FocusedIconPathData" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

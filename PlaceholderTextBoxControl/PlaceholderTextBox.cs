@@ -55,6 +55,16 @@ public class PlaceholderTextBox : TextBox
         set => SetValue(IconPathDataProperty, value);
     }
 
+    public static readonly DependencyProperty FocusedIconPathDataProperty =
+        DependencyProperty.Register(nameof(FocusedIconPathData), typeof(Geometry),
+            typeof(PlaceholderTextBox), new PropertyMetadata(Geometry.Empty));
+
+    public Geometry FocusedIconPathData
+        {
+        get => (Geometry)GetValue(FocusedIconPathDataProperty);
+        set => SetValue(FocusedIconPathDataProperty, value);
+        }
+
 
     static PlaceholderTextBox()
     {
