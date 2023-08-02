@@ -31,6 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AudioPlayer.Domain\AudioPlayer.Domain.csproj" />
       <ProjectReference Include="..\DropdownMenuControl\DropdownMenuControl.csproj" />
       <ProjectReference Include="..\LoadingSpinnerControl\LoadingSpinnerControl.csproj" />
       <ProjectReference Include="..\ModalControl\ModalControl.csproj" />

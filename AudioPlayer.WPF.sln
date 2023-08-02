@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaceholderTextBoxControl",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DropdownMenuControl", "DropdownMenuControl\DropdownMenuControl.csproj", "{13262922-8FA4-47F2-8535-CBB6BDD00B04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioButtonWithIconControl", "RadioButtonWithIconControl\RadioButtonWithIconControl.csproj", "{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioButtonWithIconControl", "RadioButtonWithIconControl\RadioButtonWithIconControl.csproj", "{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.Domain", "AudioPlayer.Domain\AudioPlayer.Domain.csproj", "{027D0526-24DC-47C5-A236-E015B74CA4F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.EntityFramework", "AudioPlayer.EntityFramework\AudioPlayer.EntityFramework.csproj", "{65BA852F-4420-4C8C-938E-1EDAC0C7AF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.Infrastructure", "AudioPlayer.Persistance\AudioPlayer.Infrastructure.csproj", "{28003281-43D8-4FDE-BD53-5C8A982A1711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{967B82A4-AE8D-4163-BC6E-CBCA6C27C21B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{027D0526-24DC-47C5-A236-E015B74CA4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{027D0526-24DC-47C5-A236-E015B74CA4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{027D0526-24DC-47C5-A236-E015B74CA4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{027D0526-24DC-47C5-A236-E015B74CA4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BA852F-4420-4C8C-938E-1EDAC0C7AF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BA852F-4420-4C8C-938E-1EDAC0C7AF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BA852F-4420-4C8C-938E-1EDAC0C7AF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BA852F-4420-4C8C-938E-1EDAC0C7AF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28003281-43D8-4FDE-BD53-5C8A982A1711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28003281-43D8-4FDE-BD53-5C8A982A1711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28003281-43D8-4FDE-BD53-5C8A982A1711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28003281-43D8-4FDE-BD53-5C8A982A1711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

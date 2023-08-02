@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AudioPlayer.Domain\AudioPlayer.Domain.csproj" />
+    <ProjectReference Include="..\AudioPlayer.EntityFramework\AudioPlayer.EntityFramework.csproj" />
+  </ItemGroup>
+
+</Project>

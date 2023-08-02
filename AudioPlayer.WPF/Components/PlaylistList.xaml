@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioPlayer.WPF.Components"
              xmlns:controls="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-             xmlns:converters="clr-namespace:AudioPlayer.WPF.Converters"
              mc:Ignorable="d"
              Name="root"
              d:DesignHeight="400"
