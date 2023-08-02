@@ -6,37 +6,32 @@
              xmlns:local="clr-namespace:AudioPlayer.WPF.Components"
              Name="root"
              mc:Ignorable="d">
-    <Border CornerRadius="5"
-            Margin="0, 0, 0, 10"
-            Background="{DynamicResource Brush2}"
-            Width="{Binding Width, ElementName=root}">
-        <Grid>
-             <Grid.RowDefinitions>
-                 <RowDefinition Height="{Binding Width, ElementName=root}" />
-                 <RowDefinition Height="Auto"/>
-             </Grid.RowDefinitions>
-            <Border Grid.Row="0"
-                    CornerRadius="8"
-                    Margin="15">
-                <Border.Background>
-                    <ImageBrush Stretch="Fill" 
-                                ImageSource="../Images/m1000x1000.jpg"/>
-                </Border.Background>
-            </Border>
-            <Grid Grid.Row="1"
-                  Margin="15, 0, 15, 15">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" 
-                           Text="dfgfdgdf" 
-                           Margin="0, 0, 0, 3"
-                           Style="{DynamicResource WhiteText}"/>
-                <TextBlock Grid.Row="1" 
-                           Text="dsfgsdfds" 
-                           Style="{DynamicResource GrayText}"/>
-            </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding Width, ElementName=root}"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                CornerRadius="8"
+                Margin="15">
+            <Border.Background>
+                <ImageBrush Stretch="Fill" 
+                            ImageSource="../Images/m1000x1000.jpg"/>
+            </Border.Background>
+        </Border>
+        <Grid Grid.Row="1"
+              Margin="15, 0, 15, 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" 
+                       Text="{Binding Title}" 
+                       Margin="0, 0, 0, 3"
+                       Style="{DynamicResource WhiteText}"/>
+            <TextBlock Grid.Row="1" 
+                       Text="{Binding Author}" 
+                       Style="{DynamicResource GrayText}"/>
         </Grid>
-    </Border>
+    </Grid>
 </UserControl>

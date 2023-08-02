@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AudioPlayer.WPF.Views"
              xmlns:components="clr-namespace:AudioPlayer.WPF.Components"
-             mc:Ignorable="d">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+             mc:Ignorable="d"
+             d:DesignHeight="400"
+             d:DesignWidth="700">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -14,23 +17,15 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Home"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource WhiteBrush}"
+                       Margin="40 10"
+                       FontSize="46" />
+            
+            <components:PlaylistList Grid.Row="1"/>
 
-                <TextBlock Grid.Row="0"
-                           Text="Home"
-                           FontWeight="Bold"
-                           Foreground="{StaticResource WhiteBrush}"
-                           Margin="20 10"
-                           FontSize="46" />
-
-                <components:PlaylistList Grid.Row="1"/>
-
-
-            </Grid>
         </Grid>
     </ScrollViewer>
 </UserControl>

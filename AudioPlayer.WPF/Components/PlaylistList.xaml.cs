@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -14,21 +15,21 @@ public partial class PlaylistList : UserControl
         InitializeComponent();
         ListView.ItemsSource = new List<Playlist>
         {
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
-            new Playlist { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
+            new() { Author = "жак руссо", Id = 1, Title = "Утопия" },
         };
     }
 }
