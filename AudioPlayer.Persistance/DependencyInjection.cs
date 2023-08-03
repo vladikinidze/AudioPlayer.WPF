@@ -10,7 +10,7 @@ namespace AudioPlayer.Infrastructure
         public static IServiceCollection AddDbConnection(
             this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration["ConnectionStrings:DefaultConnection"];
+            var connectionString = configuration.GetConnectionString("Default");
 
             services.AddDbContext<AudioPlayerDbContext>(options => 
                 options.UseNpgsql(connectionString));

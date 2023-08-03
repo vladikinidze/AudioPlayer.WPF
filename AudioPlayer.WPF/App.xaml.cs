@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Windows;
+using AudioPlayer.Infrastructure;
 using AudioPlayer.WPF.Services;
 using AudioPlayer.WPF.Stores;
 using AudioPlayer.WPF.ViewModels;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace AudioPlayer.WPF;
 
@@ -12,33 +15,43 @@ namespace AudioPlayer.WPF;
 /// </summary>
 public partial class App : Application
 {
-    private readonly IServiceProvider _serviceProvider;
+    private IServiceProvider _serviceProvider;
+
+    private readonly IHost _host;
 
     public App()
     {
-        IServiceCollection services = new ServiceCollection();
+        _host = Host.CreateDefaultBuilder()
+            .ConfigureServices((context, services) =>
+            {
+                services.AddDbConnection(context.Configuration);
+                services.AddSingleton<NavigationStore>();
+                services.AddSingleton<ModalNavigationStore>();
+                services.AddSingleton<NavigationStore>();
+                services.AddSingleton<ModalNavigationStore>();
 
-        services.AddSingleton<NavigationStore>();
-        services.AddSingleton<ModalNavigationStore>();
+                services.AddSingleton(CreateHomeNavigationService);
 
-        services.AddSingleton(CreateHomeNavigationService);
+                services.AddTransient<HomeViewModel>(serviceProvider =>
+                    new HomeViewModel(CreateAccountNavigationService(serviceProvider)));
+                services.AddTransient<AccountViewModel>(serviceProvider =>
+                    new AccountViewModel(CreateHomeNavigationService(serviceProvider)));
+                services.AddTransient<LibraryViewModel>(serviceProvider =>
+                    new LibraryViewModel());
+                services.AddTransient<SearchViewModel>(serviceProvider =>
+                    new SearchViewModel());
+                services.AddSingleton(CreateSidebarViewModel);
 
-        services.AddTransient<HomeViewModel>(serviceProvider =>
-            new HomeViewModel(CreateAccountNavigationService(serviceProvider)));
-        services.AddTransient<AccountViewModel>(serviceProvider =>
-            new AccountViewModel(CreateHomeNavigationService(serviceProvider)));
-        services.AddTransient<LibraryViewModel>(serviceProvider =>
-            new LibraryViewModel());
-        services.AddTransient<SearchViewModel>(serviceProvider =>
-            new SearchViewModel());
-        services.AddSingleton(CreateSidebarViewModel);
+                services.AddSingleton<MainViewModel>();
+                services.AddSingleton<MainWindow>(serviceProvider => new MainWindow
+                {
+                    DataContext = serviceProvider.GetRequiredService<MainViewModel>(),
+                });
+                _serviceProvider = services.BuildServiceProvider();
+            })
+            .Build();
+
         
-        services.AddSingleton<MainViewModel>();
-        services.AddSingleton<MainWindow>(serviceProvider => new MainWindow
-        {
-            DataContext = serviceProvider.GetRequiredService<MainViewModel>(),
-        });
-        _serviceProvider = services.BuildServiceProvider();
     }
 
     private SidebarViewModel CreateSidebarViewModel(IServiceProvider serviceProvider)
@@ -51,6 +64,7 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
+        _host.Start();
         var initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
         initialNavigationService.Navigate();
         
@@ -58,6 +72,13 @@ public partial class App : Application
         MainWindow.Show();
         
         base.OnStartup(e);
+    }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        _host.StopAsync();
+        _host.Dispose();
+        base.OnExit(e);
     }
 
     private INavigationService CreateLibraryNavigationService(IServiceProvider serviceProvider)

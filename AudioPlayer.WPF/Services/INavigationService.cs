@@ -1,6 +1,4 @@
-﻿using AudioPlayer.WPF.ViewModels;
-
-namespace AudioPlayer.WPF.Services;
+﻿namespace AudioPlayer.WPF.Services;
 
 public interface INavigationService
 {

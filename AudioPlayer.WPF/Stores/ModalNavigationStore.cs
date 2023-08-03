@@ -5,10 +5,9 @@ namespace AudioPlayer.WPF.Stores;
 
 public class ModalNavigationStore
 {
-    public event Action CurrentViewModelChanged;
+    public event Action CurrentViewModelChanged = null!;
     
-
-    private BaseViewModel _currentViewModel;
+    private BaseViewModel _currentViewModel = null!;
     public BaseViewModel CurrentViewModel
     {
         get => _currentViewModel;
