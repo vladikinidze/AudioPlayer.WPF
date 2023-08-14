@@ -2,10 +2,30 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Components\Track.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\TrackList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PlaylistView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Components\Track.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\TrackList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\ControlsStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PlaylistView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

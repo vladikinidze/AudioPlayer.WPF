@@ -4,7 +4,6 @@ using AudioPlayer.Infrastructure;
 using AudioPlayer.WPF.Services;
 using AudioPlayer.WPF.Stores;
 using AudioPlayer.WPF.ViewModels;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -15,7 +14,7 @@ namespace AudioPlayer.WPF;
 /// </summary>
 public partial class App : Application
 {
-    private IServiceProvider _serviceProvider;
+    private readonly IServiceProvider _serviceProvider;
 
     private readonly IHost _host;
 
@@ -47,11 +46,10 @@ public partial class App : Application
                 {
                     DataContext = serviceProvider.GetRequiredService<MainViewModel>(),
                 });
-                _serviceProvider = services.BuildServiceProvider();
+                
             })
             .Build();
-
-        
+        _serviceProvider = _host.Services;
     }
 
     private SidebarViewModel CreateSidebarViewModel(IServiceProvider serviceProvider)
