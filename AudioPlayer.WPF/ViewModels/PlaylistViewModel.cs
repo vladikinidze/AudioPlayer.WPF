@@ -11,9 +11,8 @@ public class PlaylistViewModel : BaseViewModel
 {
     private readonly Playlist _current;
 
-    public PlaylistViewModel(Playlist current)
+    public PlaylistViewModel()
     {
-        _current = current;
     }
 
     

@@ -27,8 +27,8 @@ public partial class App : Application
                 services.AddSingleton<NavigationStore>();
                 services.AddSingleton<ModalNavigationStore>();
                 services.AddSingleton<NavigationStore>();
-                services.AddSingleton<ModalNavigationStore>();
 
+                services.AddTransient<SidebarViewModel>();
                 services.AddSingleton(CreateHomeNavigationService);
 
                 services.AddTransient<HomeViewModel>(serviceProvider =>
@@ -109,5 +109,13 @@ public partial class App : Application
             serviceProvider.GetRequiredService<NavigationStore>(),
             serviceProvider.GetRequiredService<SidebarViewModel>,
             serviceProvider.GetRequiredService<HomeViewModel>);
+    }
+
+    private INavigationService CreatePlaylistNavigationService(IServiceProvider serviceProvider)
+    {
+        return new LayoutNavigationService<PlaylistViewModel>(
+            serviceProvider.GetRequiredService<NavigationStore>(),
+            serviceProvider.GetRequiredService<SidebarViewModel>,
+            serviceProvider.GetRequiredService<PlaylistViewModel>);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AudioPlayer.WPF.Services;
-using AudioPlayer.WPF.ViewModels;
 
 namespace AudioPlayer.WPF.Command;
 

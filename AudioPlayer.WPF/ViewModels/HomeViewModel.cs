@@ -12,4 +12,5 @@ public class HomeViewModel : BaseViewModel
     }
 
     public ICommand NavigateAccountCommand { get; }
+    public ICommand NavigatePlaylistCommand { get; }
 }
